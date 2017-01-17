@@ -4,7 +4,7 @@
   "version": "1.3.4",
   "codename": "hong kong",
   "repository": {
-    "url": "git://github.com/ionic-team/ionic.git"
+    "url": "git://github.com/ionic-team/ionic-v1.git"
   },
   "devDependencies": {
     "canonical-path": "0.0.2",
