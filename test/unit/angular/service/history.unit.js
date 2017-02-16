@@ -1547,4 +1547,57 @@ describe('Ionic History', function() {
 
   }));
 
+  it('should not remove backView references from Views in the same history stack', inject(function($state, $ionicHistory) {
+
+    var tab1Container = {};
+    var tab2Container = {};
+    ionicHistory.registerHistory(tab1Container);
+    ionicHistory.registerHistory(tab2Container);
+
+    // register tab1, view1
+    $state.go('tabs.tab1view1');
+    rootScope.$apply();
+    var tab1view1Reg = ionicHistory.register(tab1Container, false);
+
+    // register tab2, view1
+    $state.go('tabs.tab2view1');
+    rootScope.$apply();
+    var tab2view1Reg = ionicHistory.register(tab2Container, false);
+
+    // register tab2, view2
+    $state.go('tabs.tab2view2');
+    rootScope.$apply();
+    var tab2view2Reg = ionicHistory.register(tab2Container, false);
+    var tab2view2 = ionicHistory.getViewById(tab2view2Reg.viewId);
+    expect(tab2view2.backViewId).toEqual(tab2view1Reg.viewId);
+
+    // go back to tab2, view1
+    $state.go('tabs.tab2view1');
+    rootScope.$apply();
+    tab2view1Reg = ionicHistory.register(tab2Container, false);
+
+    // register tab1, view1
+    $state.go('tabs.tab1view1');
+    rootScope.$apply();
+    tab1view1Reg = ionicHistory.register(tab1Container, false);
+
+    // go to tab1, view 2
+    // register tab1, view2
+    $state.go('tabs.tab1view2');
+    rootScope.$apply();
+    var tab1view2Reg = ionicHistory.register(tab1Container, false);
+    currentView = ionicHistory.currentView();
+    expect(currentView.backViewId).toEqual(tab1view1Reg.viewId);
+
+    // register tab2, view1
+    $state.go('tabs.tab2view1');
+    rootScope.$apply();
+    tab2view1Reg = ionicHistory.register(tab2Container, false);
+    currentView = ionicHistory.currentView();
+    expect(currentView.backViewId).toEqual(tab1view2Reg.viewId);
+    expect(tab2view2.historyId).toEqual(currentView.historyId);
+    expect(tab2view2.backViewId).toEqual(currentView.viewId);
+
+  }));
+
 });
