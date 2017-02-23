@@ -1,3 +1,12 @@
+<a name="1.3.3"></a>
+## 1.3.3 "germany" (2017-02-22)
+
+#### Bug Fixes
+
+* **tap:**  Exclude contentEditable from preventDefault on tapMouseDown(). ([5ac4549](https://github.com/driftyco/ionic-v1/commit/014400a56c0088a74c0041fa6ace390398ba8c5f))
+
+* **history** fix Back Button issue ([980126d](https://github.com/driftyco/ionic-v1/commit/980126d57c891a09c8afcc5f2944f8fbe5085e94))
+
 <a name="1.3.2"></a>
 ## 1.3.2 "france" (2016-10-24)
 
