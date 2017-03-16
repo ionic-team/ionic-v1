@@ -15,7 +15,7 @@
  * @usage
  * ```html
  * <ion-content scroll="false">
- *   <ion-slides  options="options" slider="data.slider">
+ *   <ion-slides  options="options" slider="slider">
  *     <ion-slide-page>
  *       <div class="box blue"><h1>BLUE</h1></div>
  *     </ion-slide-page>
