@@ -127,8 +127,8 @@ function($animate, $timeout, $compile) {
 
           var slidesLength = _this.__slider.slides.length;
 
-          // Don't allow pager to show with > 10 slides
-          if (slidesLength > 10) {
+          // Don't allow pager to show with > options.maxSlideLength or 10 slides if none is specified
+          if (slidesLength > (_this._options.maxSlideLength || 10)) {
             $scope.showPager = false;
           }
 
