@@ -104,7 +104,8 @@ function($animate, $timeout, $compile) {
     transclude: true,
     scope: {
       options: '=',
-      slider: '='
+      slider: '=',
+      showPager: '='
     },
     template: '<div class="swiper-container">' +
       '<div class="swiper-wrapper" ng-transclude>' +
