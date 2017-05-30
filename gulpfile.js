@@ -339,7 +339,7 @@ gulp.task('release-github', function(done) {
   .then(function(log) {
     var version = 'v' + pkg.version;
     github.releases.createRelease({
-      owner: 'driftyco',
+      owner: 'ionic-team',
       repo: 'ionic',
       tag_name: version,
       name: version + ' "' + pkg.codename + '"',

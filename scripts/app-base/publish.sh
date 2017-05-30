@@ -31,7 +31,7 @@ function run {
   cp -Rf scss $APPBASE_LIB_DIR
 
   echo "-- Updating bower dependency..."
-  replaceJsonProp "$APPBASE_DIR/bower.json" "ionic" "driftyco\/ionic-bower#$VERSION"
+  replaceJsonProp "$APPBASE_DIR/bower.json" "ionic" "ionic-team\/ionic-bower#$VERSION"
 
   cd $APPBASE_DIR
 

@@ -31,7 +31,7 @@ function run {
     echo "-- No changes detected in docs for $VERSION_NAME; docs not updated."
   else
     git add -A
-    git commit -am "Automated build of native docs driftyco/$CIRCLE_PROJECT_REPONAME@$CIRCLE_SHA1"
+    git commit -am "Automated build of native docs ionic-team/$CIRCLE_PROJECT_REPONAME@$CIRCLE_SHA1"
 
     # in case a different commit was pushed to ionic-site during doc/demo gen,
     # try to rebase around it before pushing

@@ -40,10 +40,10 @@ If you'd rather do everything by hand, you can grab all the files for Ionic belo
   * The `release` folder of this repository
   * Ionic CDN: [Latest Release](http://code.ionicframework.com/)
   * Using bower: `bower install ionic`
-  * For [Meteor](https://www.meteor.com/) applications: `meteor add driftyco:ionic`
+  * For [Meteor](https://www.meteor.com/) applications: `meteor add ionic-team:ionic`
 - Download the **bleeding edge just-from-master release** from:
   * Ionic CDN: [Nightly Build](http://code.ionicframework.com/#nightly)
-  * Using bower: `bower install driftyco/ionic-bower#master`
+  * Using bower: `bower install ionic-team/ionic-bower#master`
 
 Once you have a release, use `js/ionic.js`, `js/ionic-angular.js`, and `css/ionic.css`.
 
@@ -84,7 +84,7 @@ Ionic currently supports Android 4.1 and above, iOS 8 and above, and Windows 10.
 
 * Documentation is generated into `./../ionic-site`.  To test documentation properly, follow these steps:
   1. Clone ionic-site into `./../ionic-site`
-    - `git clone git@github.com:driftyco/ionic-site ./../ionic-site`
+    - `git clone git@github.com:ionic-team/ionic-site ./../ionic-site`
   2. Start jekyll, telling it to rebuild whenever the site changes
     - `cd ./../ionic-site && jekyll serve -w`
   3. Go back to project root and build the docs
