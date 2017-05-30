@@ -1,7 +1,7 @@
 Editing Doc Pages
 -----------------
 
-First, follow these steps: https://github.com/driftyco/ionic#documentation
+First, follow these steps: https://github.com/ionic-team/ionic#documentation
 
 **Templates in `templates` folder**
 

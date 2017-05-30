@@ -3,11 +3,11 @@
 
 If you have a question on how something works, or its expected functionality, you might want to visit the [Ionic Forum](http://forum.ionicframework.com/) first.
 
-If you think you have found a bug, or have a new feature idea, please start by making sure it hasn't already been [reported](https://github.com/driftyco/ionic/issues?state=open). You can search through existing issues to see if someone's reported one similar to yours.
+If you think you have found a bug, or have a new feature idea, please start by making sure it hasn't already been [reported](https://github.com/ionic-team/ionic/issues?state=open). You can search through existing issues to see if someone's reported one similar to yours.
 
 If not, then [create a codepen.io](http://codepen.io/ionic/public-list) that demonstrates the problem (try to use as little code as possible: the more minimalist, the faster we can debug it). Also, please do not group multiple topics into one issue, but instead each should be its own issue.
 
-Next, [create a new issue](https://github.com/driftyco/ionic/issues/new) that thoroughly explains the problem, how to reproduce the issue, and provide any additional information such as code examples and error logs.
+Next, [create a new issue](https://github.com/ionic-team/ionic/issues/new) that thoroughly explains the problem, how to reproduce the issue, and provide any additional information such as code examples and error logs.
 
 
 ### Issue Etiquette Guidelines
@@ -37,4 +37,4 @@ Please read the contributing guide on the ionic website: http://ionicframework.c
 
 ## Ionic 2.x
 
-See the Ionic 2 [CONTRIBUTING](https://github.com/driftyco/ionic/blob/2.0/CONTRIBUTING.md) file.
+See the Ionic 2 [CONTRIBUTING](https://github.com/ionic-team/ionic/blob/2.0/CONTRIBUTING.md) file.

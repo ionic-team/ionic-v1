@@ -24,7 +24,7 @@
  * More info:
  * - https://openradar.appspot.com/22186109
  * - https://github.com/angular/angular.js/issues/12241
- * - https://github.com/driftyco/ionic/issues/4082
+ * - https://github.com/ionic-team/ionic/issues/4082
  *
  *
  * @license AngularJS

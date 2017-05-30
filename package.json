@@ -4,7 +4,7 @@
   "version": "1.3.3",
   "codename": "germany",
   "repository": {
-    "url": "git://github.com/driftyco/ionic.git"
+    "url": "git://github.com/ionic-team/ionic.git"
   },
   "devDependencies": {
     "canonical-path": "0.0.2",
