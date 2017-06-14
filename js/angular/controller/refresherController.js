@@ -354,9 +354,24 @@ IonicModule
       var q = $scope.$onRefresh();
 
       if (q && q.then) {
-        q['finally'](function() {
-          $scope.$broadcast('scroll.refreshComplete');
-        });
+        if (q['finally']) {
+          q['finally'](broadcastRefreshEnd);
+        } else {
+          q.then(
+            function(payload) {
+              broadcastRefreshEnd();
+              return payload;
+            },
+            function(error) {
+              broadcastRefreshEnd();
+              throw error;
+            }
+          );
+        }
+      }
+
+      function broadcastRefreshEnd() {
+        $scope.$broadcast('scroll.refreshComplete');
       }
     }
 
