@@ -329,6 +329,10 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
   // Handle a drag event
   self._handleDrag = function(e) {
     if (isAsideExposed || !$scope.dragContent) return;
+    //if dragContent is right
+    if ($scope.dragContent=='right' && !self.isOpenRight() && e.gesture.direction=='right')return;
+    //if dragContent is left
+    if ($scope.dragContent=='left' && !self.isOpenLeft() && e.gesture.direction=='left')return;
 
     // If we don't have start coords, grab and store them
     if (!startX) {
@@ -359,7 +363,7 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
 
   self.canDragContent = function(canDrag) {
     if (arguments.length) {
-      $scope.dragContent = !!canDrag;
+      $scope.dragContent = canDrag;
     }
     return $scope.dragContent;
   };
