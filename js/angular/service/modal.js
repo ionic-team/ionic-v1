@@ -240,11 +240,9 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
       if (self.positionView) {
         ionic.off('resize', self._onWindowResize, window);
       }
-
+	  
       return $timeout(function() {
-        if (!modalStack.length) {
-          $ionicBody.removeClass(self.viewType + '-open');
-        }
+        $ionicBody.removeClass(self.viewType + '-open');
         self.el.classList.add('hide');
       }, self.hideDelay || 320);
     },
