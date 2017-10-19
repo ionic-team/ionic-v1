@@ -192,15 +192,12 @@ gulp.task('scripts-ng', function() {
 
 gulp.task('sass', function(done) {
   gulp.src('scss/ionic.scss')
-    .pipe(header(banner))
-    .pipe(sass({
-      onError: function(err) {
-        //If we're watching, don't exit on error
-        if (IS_WATCH) {
-          console.log(gutil.colors.red(err));
-        } else {
-          done(err);
-        }
+    // .pipe(header(banner))
+    .pipe(sass().on('error', function(err){
+      if (IS_WATCH){
+        console.log(gutil.colors.red(err));
+      } else {
+        done(err);
       }
     }))
     .pipe(concat('ionic.css'))
