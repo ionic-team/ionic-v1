@@ -1,7 +1,7 @@
 {
     "repo": "ionic-team/ionic",
     "development": {},
-    "version": "1.3.3",
+    "version": "1.3.4",
     "styles": [
       "dist/css/ionic.css"
     ],
