@@ -12,7 +12,7 @@
     "connect": "^2.13.0",
     "conventional-changelog": "^1.1.0",
     "cpr": "^0.2.0",
-    "dgeni": "^0.3.0",
+    "dgeni": "0.4.0",
     "dgeni-packages": "^0.22.0",
     "event-stream": "3.1.0",
     "github": "^0.2.1",
