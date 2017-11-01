@@ -25,16 +25,10 @@
       }
     }
     .bar-header {
-      padding-left: calc(
-        constant(safe-area-inset-left) + #{$bar-padding-portrait}
-      );
+      padding-left: calc( constant(safe-area-inset-left) + #{$bar-padding-portrait});
       padding-left: calc(env(safe-area-inset-left) + #{$bar-padding-portrait});
-      padding-right: calc(
-        constant(safe-area-inset-right) + #{$bar-padding-portrait}
-      );
-      padding-right: calc(
-        env(safe-area-inset-right) + #{$bar-padding-portrait}
-      );
+      padding-right: calc(constant(safe-area-inset-right) + #{$bar-padding-portrait});
+      padding-right: calc(env(safe-area-inset-right) + #{$bar-padding-portrait});
 
       .buttons:last-child {
         right: calc(constant(safe-area-inset-right) + #{$bar-padding-portrait});
@@ -77,8 +71,8 @@
     .has-header.has-subheader.has-tabs-top {
       top: $bar-height + $bar-subheader-height + $tabs-height + $ios-statusbar-height;
 
-      top: calc(#{$bar-height + $bar-subheader-height + $tabs-height} + constant(safe-area-inset-right);
-      top: calc(#{$bar-height + $bar-subheader-height + $tabs-height} + env(safe-area-inset-right);
+      top: calc(#{$bar-height + $bar-subheader-height + $tabs-height} + constant(safe-area-inset-right));
+      top: calc(#{$bar-height + $bar-subheader-height + $tabs-height} + env(safe-area-inset-right));
     }
   }
   .popover {

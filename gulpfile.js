@@ -27,7 +27,8 @@ var gulpif = require('gulp-if');
 var header = require('gulp-header');
 var eslint = require('gulp-eslint');
 var jscs = require('gulp-jscs');
-var minifyCss = require('gulp-minify-css');
+// var minifyCss = require('gulp-minify-css');
+var cleanCss = require('gulp-clean-css');
 var rename = require('gulp-rename');
 var rimraf = require("rimraf");
 var runSequence = require('run-sequence');
@@ -202,7 +203,7 @@ gulp.task('sass', function(done) {
     }))
     .pipe(concat('ionic.css'))
     .pipe(gulp.dest(buildConfig.dist + '/css'))
-    .pipe(gulpif(IS_RELEASE_BUILD, minifyCss()))
+    .pipe(gulpif(IS_RELEASE_BUILD, cleanCss()))
     .pipe(rename({ extname: '.min.css' }))
     .pipe(gulp.dest(buildConfig.dist + '/css'))
     .on('end', done);
@@ -304,7 +305,7 @@ gulp.task('prepareForNpm', function(done){
 });
 
 gulp.task("publishToNpm", ['prepareForNpm'], function(done){
-  var tagName = argv.tagName && argv.tagName.length > 0 ? argv.tagName : "nightly";
+  var tagName = argv.tagName && argv.tagName.length > 0 ? argv.tagName : "v1-nightly";
 
   var spawn = require('child_process').spawn;
 
