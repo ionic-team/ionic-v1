@@ -52,8 +52,13 @@
     .tabs-bottom > .tabs, .tabs.tabs-bottom{
       padding-bottom: constant(safe-area-inset-bottom);
       padding-bottom: env(safe-area-inset-bottom);
+<<<<<<< HEAD
       height: calc(constant(safe-area-inset-bottom) + #{$tabs-height});
       height: calc(env(safe-area-inset-bottom) + #{$tabs-height});
+=======
+      height: calc(constant(safe-area-inset-bottom) + #{$tabs-height + 5px});
+      height: calc(env(safe-area-inset-bottom) + #{$tabs-height + 5px});
+>>>>>>> 59af9cbe8945805b53ab08c708961fe83b782674
     }
 
     .has-header, .bar-subheader {
