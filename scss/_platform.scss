@@ -16,6 +16,8 @@
 
       &.item-input-inset .item-input-wrapper {
         margin-top: 19px !important;
+        margin-top: constant(safe-area-inset-top) !important;
+        margin-top: env(safe-area-inset-top) !important;
       }
 
       > * {
@@ -25,7 +27,7 @@
       }
     }
     .bar-header {
-      padding-left: calc( constant(safe-area-inset-left) + #{$bar-padding-portrait});
+      padding-left: calc(constant(safe-area-inset-left) + #{$bar-padding-portrait});
       padding-left: calc(env(safe-area-inset-left) + #{$bar-padding-portrait});
       padding-right: calc(constant(safe-area-inset-right) + #{$bar-padding-portrait});
       padding-right: calc(env(safe-area-inset-right) + #{$bar-padding-portrait});
@@ -43,14 +45,17 @@
 
     .tabs-top > .tabs, .tabs.tabs-top {
       top: $bar-height + $ios-statusbar-height;
+      top: calc(constant(safe-area-inset-top) + #{$bar-height});
+      top: calc(env(safe-area-inset-top) + #{$bar-height});
     }
 
-    .tabs {
+    .tabs-bottom > .tabs, .tabs.tabs-bottom{
       padding-bottom: constant(safe-area-inset-bottom);
       padding-bottom: env(safe-area-inset-bottom);
-      height: calc(constant(safe-area-inset-bottom) + 49px);
-      height: calc(env(safe-area-inset-bottom) + 49px);
+      height: calc(constant(safe-area-inset-bottom) + #{$tabs-height});
+      height: calc(env(safe-area-inset-bottom) + #{$tabs-height});
     }
+
     .has-header, .bar-subheader {
       top: $bar-height + $ios-statusbar-height;
       top: calc(constant(safe-area-inset-top) + #{$bar-height});
