@@ -536,8 +536,8 @@ function($timeout, $document, $q, $ionicClickBlock, $ionicConfig, $ionicNavBarDe
   }
 
   function compareStatePrefixes(enteringStateName, exitingStateName) {
-    var enteringStateSuffixIndex = enteringStateName.lastIndexOf('.');
-    var exitingStateSuffixIndex = exitingStateName.lastIndexOf('.');
+    var enteringStateSuffixIndex = enteringStateName.indexOf('.');
+    var exitingStateSuffixIndex = exitingStateName.indexOf('.');
 
     // if either of the prefixes are empty, just return false
     if ( enteringStateSuffixIndex < 0 || exitingStateSuffixIndex < 0 ) {

@@ -164,18 +164,6 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
             // remove the hide class so the tabs content shows up
             $ionicViewSwitcher.viewEleIsActive(childElement, true);
 
-          } else if (isTabContentAttached && childElement) {
-            // this tab should NOT be selected, and it is already in the DOM
-
-            if ($ionicConfig.views.maxCache() > 0) {
-              // keep the tabs in the DOM, only css hide it
-              $ionicViewSwitcher.viewEleIsActive(childElement, false);
-
-            } else {
-              // do not keep tabs in the DOM
-              destroyTab();
-            }
-
           }
         }
 
@@ -190,6 +178,22 @@ function($compile, $ionicConfig, $ionicBind, $ionicViewSwitcher) {
 
         $scope.$on('$ionicView.afterEnter', function() {
           $ionicViewSwitcher.viewEleIsActive(childElement, $scope.$tabSelected);
+        });
+
+        $scope.$on('$ionicView.afterLeave', function(leavingData) {
+          if (($scope.$tabSelected == true) && (leavingData.currentScope.navViewName == tabCtrl.navViewName)) {
+            // not leaving the tab, nothing to do
+            return;
+          }
+
+          if ($ionicConfig.views.maxCache() > 0) {
+            // keep the tabs in the DOM, only css hide it
+            $ionicViewSwitcher.viewEleIsActive(childElement, false);
+
+          } else {
+            // do not keep tabs in the DOM
+            destroyTab();
+          }
         });
 
         $scope.$on('$ionicView.clearCache', function() {
