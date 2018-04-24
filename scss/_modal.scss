@@ -50,7 +50,7 @@
   .platform-ios.platform-cordova .modal-wrapper .modal {
     .bar-header:not(.bar-subheader) {
       height: $bar-height;
-      > * {
+      > *, &.item-input-inset .item-input-wrapper {
         margin-top: 0;
       }
     }

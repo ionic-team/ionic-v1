@@ -15,9 +15,9 @@
       height: calc(env(safe-area-inset-top) + #{$bar-height});
 
       &.item-input-inset .item-input-wrapper {
-        margin-top: 19px !important;
-        margin-top: constant(safe-area-inset-top) !important;
-        margin-top: env(safe-area-inset-top) !important;
+        margin-top: 19px;
+        margin-top: constant(safe-area-inset-top);
+        margin-top: env(safe-area-inset-top);
       }
 
       > * {
