@@ -26,7 +26,7 @@
         margin-top: env(safe-area-inset-top);
       }
     }
-    .bar-header {
+    .bar-header, .bar-subheader {
       padding-left: calc(constant(safe-area-inset-left) + #{$bar-padding-portrait});
       padding-left: calc(env(safe-area-inset-left) + #{$bar-padding-portrait});
       padding-right: calc(constant(safe-area-inset-right) + #{$bar-padding-portrait});
@@ -104,51 +104,52 @@
 }
 
 @media (orientation: landscape) {
-  .item {
-    padding: $item-padding calc(constant(safe-area-inset-right) + #{$item-padding});
+  @if $enable-item-safe-area-padding {
+    .item {
+      padding-left: calc(env(safe-area-inset-right) + #{$item-padding});
+      padding-right: calc(env(safe-area-inset-right) + #{$item-padding});
 
-    .badge {
-      right: calc(constant(safe-area-inset-right) + 32px)
+      .badge {
+        right: calc(env(safe-area-inset-right) + #{$item-padding * 2});
+      }
+    }
+    .item-icon-left {
+      padding-left: calc(env(safe-area-inset-left) + #{ceil( ($item-padding * 3) + ($item-padding / 3) )});
+
+      .icon {
+        left: calc(env(safe-area-inset-left) + #{ceil( ($item-padding / 3) * 2)});
+      }
+    }
+    .item-icon-right {
+      padding-right: calc(env(safe-area-inset-right) + #{ceil( ($item-padding * 3) + ($item-padding / 3) )});
+      .icon {
+        right: calc(env(safe-area-inset-right) + #{ceil( ($item-padding / 3) * 2)});
+      }
+    }
+
+    .item-complex, a.item.item-complex, button.item.item-complex {
+      padding-right: 0;
+      padding-left: 0;
+
+      .item-content {
+        padding-right: calc(env(safe-area-inset-right) + #{(ceil( ($item-padding * 3) + ($item-padding / 3)) - 5)});
+        padding-left: calc(env(safe-area-inset-left) + #{$item-padding});
+      }
+    }
+
+    .item-left-edit.visible.active {
+      transform: translateX(calc(env(safe-area-inset-left) + #{$item-left-edit-left}));
+    }
+
+    .list-left-editing .item-left-editable .item-content,
+    .item-left-editing.item-left-editable .item-content {
+      transform: translateX(calc(env(safe-area-inset-left) + #{$item-left-edit-open-width}));
+    }
+
+    .item-right-edit{
+      right: env(safe-area-inset-right)
     }
   }
-  .item-icon-left {
-    padding-left: calc(constant(safe-area-inset-left) + 54px);
-
-    .icon {
-      left: calc(constant(safe-area-inset-left) + 11px);
-    }
-  }
-  .item-icon-right {
-    padding-right: calc(constant(safe-area-inset-right) + 54px);
-    .icon {
-      right: calc(constant(safe-area-inset-right) + 11px);
-    }
-  }
-
-  .item-complex, a.item.item-complex, button.item.item-complex {
-    padding: 0;
-
-    .item-content {
-      padding: $item-padding
-        calc(constant(safe-area-inset-right) + #{(ceil( ($item-padding * 3) + ($item-padding / 3)) - 5)})
-        $item-padding
-        calc(constant(safe-area-inset-left) + #{$item-padding});
-    }
-  }
-
-  .item-left-edit.visible.active {
-    @include translate3d(calc(constant(safe-area-inset-left) + 8px), 0, 0);
-  }
-  .list-left-editing .item-left-editable .item-content,
-  .item-left-editing.item-left-editable .item-content {
-    @include translate3d(calc(constant(safe-area-inset-left) + 50px), 0, 0);
-  }
-
-  .item-right-edit{
-    right: constant(safe-area-inset-right);
-    right: env(safe-area-inset-right)
-  }
-
 
   .platform-ios.platform-browser.platform-ipad {
     position: fixed; // required for iPad 7 Safari
