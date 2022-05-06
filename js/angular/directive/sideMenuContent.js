@@ -36,7 +36,9 @@ function($timeout, $ionicGesture, $window) {
   return {
     restrict: 'EA', //DEPRECATED 'A'
     require: '^ionSideMenus',
-    scope: true,
+    scope: {
+      dragContent:"@?"
+    },
     compile: function(element, attr) {
       element.addClass('menu-content pane');
 
@@ -46,7 +48,7 @@ function($timeout, $ionicGesture, $window) {
         var primaryScrollAxis = null;
 
         if (isDefined(attr.dragContent)) {
-          $scope.$watch(attr.dragContent, function(value) {
+          $scope.$watch('dragContent', function(value) {
             sideMenuCtrl.canDragContent(value);
           });
         } else {

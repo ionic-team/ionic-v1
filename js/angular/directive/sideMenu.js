@@ -28,21 +28,28 @@ IonicModule
   return {
     restrict: 'E',
     require: '^ionSideMenus',
-    scope: true,
+    scope: {side:'@?'},
     compile: function(element, attr) {
       angular.isUndefined(attr.isEnabled) && attr.$set('isEnabled', 'true');
       angular.isUndefined(attr.width) && attr.$set('width', '275');
 
-      element.addClass('menu menu-' + attr.side);
 
       return function($scope, $element, $attr, sideMenuCtrl) {
-        $scope.side = $attr.side || 'left';
-
+        $scope.side = $scope.side || 'left';
         var sideMenu = sideMenuCtrl[$scope.side] = new ionic.views.SideMenu({
           width: attr.width,
           el: $element[0],
           isEnabled: true
         });
+        $scope.$watch('side',function (value) {
+          element.removeClass('menu-right menu-left');
+          element.addClass('menu menu-' + $scope.side);
+           sideMenu = sideMenuCtrl[$scope.side] = new ionic.views.SideMenu({
+            width: attr.width,
+            el: $element[0],
+            isEnabled: true
+          });
+        })
 
         $scope.$watch($attr.width, function(val) {
           var numberVal = +val;
@@ -57,4 +64,3 @@ IonicModule
     }
   };
 });
-
