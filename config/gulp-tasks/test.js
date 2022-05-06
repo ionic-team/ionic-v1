@@ -6,7 +6,7 @@ var gutil = require('gulp-util');
 var http = require('http');
 var karma = require('karma').server;
 var path = require('canonical-path');
-var uuid = require('node-uuid');
+var uuid = require('uuid');
 
 var projectRoot = path.resolve(__dirname, '../..');
 
