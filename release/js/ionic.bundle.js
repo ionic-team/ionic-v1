@@ -60274,7 +60274,7 @@ IonicModule
           setScrollLock(false);
         }
 
-        if (isDragging) {
+        if (isDragging && isOverscrolling) {
           nativescroll(scrollParent, deltaY - dragOffset * -1);
         }
 
