@@ -101,22 +101,28 @@
 @media (orientation: landscape) {
   .item {
     padding: $item-padding calc(constant(safe-area-inset-right) + #{$item-padding});
+    padding: $item-padding calc(env(safe-area-inset-right) + #{$item-padding});
 
     .badge {
-      right: calc(constant(safe-area-inset-right) + 32px)
+      right: calc(constant(safe-area-inset-right) + 32px);
+      right: calc(env(safe-area-inset-right) + 32px);
     }
   }
   .item-icon-left {
     padding-left: calc(constant(safe-area-inset-left) + 54px);
+    padding-left: calc(env(safe-area-inset-left) + 54px);
 
     .icon {
       left: calc(constant(safe-area-inset-left) + 11px);
+      left: calc(env(safe-area-inset-left) + 11px);
     }
   }
   .item-icon-right {
     padding-right: calc(constant(safe-area-inset-right) + 54px);
+    padding-right: calc(env(safe-area-inset-right) + 54px);
     .icon {
       right: calc(constant(safe-area-inset-right) + 11px);
+      right: calc(env(safe-area-inset-right) + 11px);
     }
   }
 
@@ -128,15 +134,21 @@
         calc(constant(safe-area-inset-right) + #{(ceil( ($item-padding * 3) + ($item-padding / 3)) - 5)})
         $item-padding
         calc(constant(safe-area-inset-left) + #{$item-padding});
+      padding: $item-padding
+        calc(env(safe-area-inset-right) + #{(ceil( ($item-padding * 3) + ($item-padding / 3)) - 5)})
+        $item-padding
+        calc(env(safe-area-inset-left) + #{$item-padding});
     }
   }
 
   .item-left-edit.visible.active {
     @include translate3d(calc(constant(safe-area-inset-left) + 8px), 0, 0);
+    @include translate3d(calc(env(safe-area-inset-left) + 8px), 0, 0);
   }
   .list-left-editing .item-left-editable .item-content,
   .item-left-editing.item-left-editable .item-content {
     @include translate3d(calc(constant(safe-area-inset-left) + 50px), 0, 0);
+    @include translate3d(calc(env(safe-area-inset-left) + 50px), 0, 0);
   }
 
   .item-right-edit{
