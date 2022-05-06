@@ -147,18 +147,18 @@ function($animate, $timeout, $compile) {
         return _this.__slider;
       };
 
-      var options = $scope.options || {};
-
-      var newOptions = angular.extend({
-        pagination: $element.children().children()[1],
-        paginationClickable: true,
-        lazyLoading: true,
-        preloadImages: false
-      }, options);
-
-      this._options = newOptions;
-
       $timeout(function() {
+        var options = $scope.options || {};
+
+        var newOptions = angular.extend({
+          pagination: $element.children().children()[1],
+          paginationClickable: true,
+          lazyLoading: true,
+          preloadImages: false
+        }, options);
+
+        this._options = newOptions;
+
         var slider = new ionic.views.Swiper($element.children()[0], newOptions, $scope, $compile);
 
         $scope.$emit("$ionicSlides.sliderInitialized", { slider: slider });
