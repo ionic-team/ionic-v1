@@ -110,7 +110,8 @@ function($scope, $element, $attrs, $q, $ionicConfig, $ionicHistory) {
       // to calculate the width of the title
       var children = angular.element(element).children();
       for ( var i = 0; i < children.length; i++ ) {
-        if ( angular.element(children[i]).hasClass('nav-bar-title') ) {
+        var child = angular.element(children[i]);
+        if ( child.hasClass('nav-bar-title') && !child.hasClass('hide') ) {
           element = children[i];
           break;
         }
