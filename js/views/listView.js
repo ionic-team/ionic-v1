@@ -272,21 +272,35 @@
       var pixelsPastTop = containerTop - pageY + this._currentDrag.elementHeight / 2;
       var pixelsPastBottom = pageY + this._currentDrag.elementHeight / 2 - containerTop - container.offsetHeight;
 
-      if (e.gesture.deltaY < 0 && pixelsPastTop > 0 && scrollY > 0) {
-        this.scrollView.scrollBy(null, -pixelsPastTop);
-        //Trigger another drag so the scrolling keeps going
-        ionic.requestAnimationFrame(function() {
-          self.drag(e);
-        });
+      if (!e.stale) {
+        if (e.gesture.deltaY < 0 && pixelsPastTop > 0 && scrollY > 0) {
+          this._currentDrag.overScrollPixels = -pixelsPastTop;
+        }
+        else if (e.gesture.deltaY > 0 && pixelsPastBottom > 0 && scrollY < this.scrollView.getScrollMax().top) {
+          this._currentDrag.overScrollPixels = pixelsPastBottom;
+        }
+        else {
+          this._currentDrag.overScrollPixels = 0;
+        }
       }
-      if (e.gesture.deltaY > 0 && pixelsPastBottom > 0) {
-        if (scrollY < this.scrollView.getScrollMax().top) {
-          this.scrollView.scrollBy(null, pixelsPastBottom);
-          //Trigger another drag so the scrolling keeps going
-          ionic.requestAnimationFrame(function() {
+      // Don't process this event again!
+      e.stale = true;
+
+      if (this._currentDrag.overScrollPixels !== 0) {
+        // Scale the scroll value based on % of element over top/bottom
+        // and cap it to a max.
+        var MAX_PX_PER_FRAME = 20;
+        var elementPercentage = Math.min(this._currentDrag.overScrollPixels / this._currentDrag.elementHeight,1);
+        var scrollPixelsPerFrame = MAX_PX_PER_FRAME * elementPercentage;
+        this.scrollView.scrollBy(null, scrollPixelsPerFrame);
+
+        // Trigger another drag so the scrolling keeps going
+        // The time out helps reduce stuck on auto scroll lag
+        setTimeout(function() {
+            ionic.requestAnimationFrame(function() {
             self.drag(e);
           });
-        }
+        },10);
       }
     }
 
