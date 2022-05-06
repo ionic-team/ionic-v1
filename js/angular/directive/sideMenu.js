@@ -13,7 +13,8 @@
  * <ion-side-menu
  *   side="left"
  *   width="myWidthValue + 20"
- *   is-enabled="shouldLeftSideMenuBeEnabled()">
+ *   is-enabled="shouldLeftSideMenuBeEnabled()"
+ *   display-type="push">
  * </ion-side-menu>
  * ```
  * For a complete side menu example, see the
@@ -22,6 +23,7 @@
  * @param {string} side Which side the side menu is currently on.  Allowed values: 'left' or 'right'.
  * @param {boolean=} is-enabled Whether this side menu is enabled.
  * @param {number=} width How many pixels wide the side menu should be.  Defaults to 275.
+ * @param {string} display-type Which type of display the menu should have.  Allowed values: 'push' or 'overlay'.  Defaults to 'push'.
  */
 IonicModule
 .directive('ionSideMenu', function() {
@@ -32,8 +34,14 @@ IonicModule
     compile: function(element, attr) {
       angular.isUndefined(attr.isEnabled) && attr.$set('isEnabled', 'true');
       angular.isUndefined(attr.width) && attr.$set('width', '275');
+      angular.isUndefined(attr.displayType) && attr.$set('displayType', 'push');
 
       element.addClass('menu menu-' + attr.side);
+      if (attr.displayType == 'overlay') {
+        element.addClass('menu-animated');
+        element[0].style[attr.side] = '-' + attr.width + 'px';
+        element[0].style.zIndex = 2147483647; // top most, maximum zIndex value
+      }
 
       return function($scope, $element, $attr, sideMenuCtrl) {
         $scope.side = $attr.side || 'left';
@@ -41,7 +49,8 @@ IonicModule
         var sideMenu = sideMenuCtrl[$scope.side] = new ionic.views.SideMenu({
           width: attr.width,
           el: $element[0],
-          isEnabled: true
+          isEnabled: true,
+          displayType: attr.displayType
         });
 
         $scope.$watch($attr.width, function(val) {
@@ -53,8 +62,12 @@ IonicModule
         $scope.$watch($attr.isEnabled, function(val) {
           sideMenu.setIsEnabled(!!val);
         });
+        $scope.$watch($attr.displayType, function(val) {
+          if (val == 'push' || val == 'overlay') {
+            sideMenu.setDisplayType(val);
+          }
+        });
       };
     }
   };
 });
-
