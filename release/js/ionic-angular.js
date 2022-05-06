@@ -9023,8 +9023,9 @@ function CollectionRepeatDirective($ionicCollectionManager, $parse, $window, $$r
       unlistenToExposeAside();
       scrollCtrl.$element && scrollCtrl.$element.off('scroll-resize', refreshDimensions);
 
-      computedStyleNode && computedStyleNode.parentNode &&
-        computedStyleNode.parentNode.removeChild(computedStyleNode);
+      // computedStyleNode && computedStyleNode.parentNode &&
+      //  computedStyleNode.parentNode.removeChild(computedStyleNode);
+	  angular.element(computedStyleNode).remove();
       computedStyleScope && computedStyleScope.$destroy();
       computedStyleScope = computedStyleNode = null;
 
